@@ -1,0 +1,66 @@
+
+---
+title: "Análisis del robo a negocio en la Ciudad de México"
+subtitle: "Proyecto de Series de Tiempo"
+author: "Equipo de trabajo"
+format:
+  revealjs:
+    slide-number: true
+    theme: simple
+    transition: none
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## 1. Planteamiento del problema y objetivos
+
+<!-- Responsable: Persona 5 -->
+
+## 2. Datos y preparación de la serie
+
+<!-- Responsable: Persona 1 -->
+
+- Fuente de los datos
+- Limpieza y transformación de fechas
+- Creación del objeto de serie de tiempo
+
+## 3. Análisis exploratorio
+
+<!-- Responsable: Persona 2, con apoyo de Persona 1 -->
+
+- Gráfica interactiva
+- Análisis de estacionalidad
+- Descomposición STL
+- ACF y PACF
+- Identificación de posibles cambios de nivel
+
+## 4. Metodología y modelos clásicos
+
+<!-- Responsable: Persona 3 -->
+
+- Pruebas de estacionariedad: ADF y KPSS
+- Identificación y estimación de ARIMA/SARIMA
+- Diagnóstico de residuos
+
+## 5. Modelos alternativos y pronóstico
+
+<!-- Responsable: Persona 4 -->
+
+- Modelos ETS
+- Comparación de modelos
+- Validación con datos de prueba
+- Pronóstico a 12 meses e intervalos
+
+## 6. Comparación e interpretación de resultados
+
+<!-- Responsables: Personas 3 y 4 -->
+
+## 7. Conclusiones y recomendaciones
+
+<!-- Responsable: Persona 5 -->
+
+## 8. Referencias
+
+<!-- Todos los integrantes aportan sus fuentes -->
