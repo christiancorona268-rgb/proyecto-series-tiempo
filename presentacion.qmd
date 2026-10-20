@@ -41,23 +41,25 @@ La base contiene observaciones mensuales del total de robos a negocio en la Ciud
 
 ## Creación de la serie de tiempo
 
-Se creó un objeto `ts` con la variable `Total Entidad`.
+Se construyó un objeto de serie de tiempo a partir de la variable `Total Entidad`.
 
-- Frecuencia: 12 observaciones por año.
-- Inicio: enero de 1997.
+- **Frecuencia:** 12 observaciones por año.
+- **Inicio:** enero de 1997.
+- **Objeto en R:** `ts`.
+
+El objeto permite analizar la evolución mensual de los robos a negocio y desarrollar modelos de pronóstico.
 
 ```{r}
-# Cargar la base procesada
+#| echo: false
+
 datos <- readRDS("data/datos_procesados.rds")
 
-# Crear el objeto de serie de tiempo
 serie <- ts(
   datos[["Total Entidad"]],
   start = c(1997, 1),
   frequency = 12
 )
 
-# Graficar la serie
 plot(
   serie,
   main = "Robos a negocio en la Ciudad de México",
