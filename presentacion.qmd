@@ -22,53 +22,31 @@ execute:
 
 <!-- Responsable: Persona 1 -->
 
-Fuente de los datos
+### Fuente de los datos
 
-La base de datos utilizada contiene observaciones mensuales del total de robos a negocio en la Ciudad de México. La información se encuentra almacenada en el archivo data_sinfuente.xlsx.
+La base contiene observaciones mensuales del total de robos a negocio en la Ciudad de México.
 
-Fuente original: Observatorio Nacional Ciudadano https://delitosmexico.onc.org.mx/tendencia/ciudad-de-mexico?unit=folders&indicator=researchFoldersRate&group=month&crime=4300&states=0&domain=
+- Periodicidad: mensual.
+- Primera observación: enero de 1997.
+- Variables: `date` y `Total Entidad`.
 
-Limpieza y transformación de fechas
+**Fuente:** Observatorio Nacional Ciudadano, https://delitosmexico.onc.org.mx/tendencia/ciudad-de-mexico?unit=folders&indicator=researchFoldersRate&group=month&crime=4300&states=0&domain=.
 
-Se importó la base de datos desde Excel y se verificaron los nombres de las variables, los tipos de datos y las primeras observaciones. Se identificaron dos variables: date, correspondiente al año y mes de cada observación, y Total Entidad, que contiene los valores de la serie.
+## Limpieza y transformación
 
-La variable date se importó inicialmente como texto, por lo que se transformó a una fecha mensual utilizando el primer día de cada mes como referencia. Posteriormente, se ordenaron las observaciones cronológicamente y se revisaron los valores faltantes y la continuidad de las fechas.
+- Se importó la base desde Excel.
+- Se convirtió `date` a una fecha mensual.
+- Se ordenaron cronológicamente las observaciones.
+- Se revisaron valores faltantes y meses consecutivos.
 
-Creación del objeto de serie de tiempo
+## Creación de la serie de tiempo
 
-Se construyó un objeto de clase ts a partir de la variable Total Entidad, considerando una frecuencia de 12 observaciones por año. La serie comienza en enero de 1997.
+Se creó un objeto `ts` con la variable `Total Entidad`.
 
-El objeto permite representar gráficamente la evolución mensual de los robos a negocio y utilizar posteriormente herramientas de análisis exploratorio, modelación y pronóstico.
+- Frecuencia: 12 observaciones por año.
+- Inicio: enero de 1997.
 
 ```{r}
-library(readxl)
-library(dplyr)
-library(lubridate)
-
-# Importar los datos
-datos <- read_excel("data/data_sinfuente.xlsx")
-
-# Convertir la fecha a una fecha mensual
-datos <- datos %>%
-  mutate(date = ym(date)) %>%
-  arrange(date)
-
-# Revisar los datos
-head(datos)
-str(datos)
-
-# Verificar meses consecutivos
-meses <- year(datos$date) * 12 + month(datos$date)
-all(diff(meses) == 1)
-
-# Crear la serie de tiempo
-serie <- ts(
-  datos[["Total Entidad"]],
-  start = c(1997, 1),
-  frequency = 12
-)
-
-# Graficar la serie
 plot(
   serie,
   main = "Robos a negocio en la Ciudad de México",
