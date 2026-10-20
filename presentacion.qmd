@@ -47,6 +47,17 @@ Se creó un objeto `ts` con la variable `Total Entidad`.
 - Inicio: enero de 1997.
 
 ```{r}
+# Cargar la base procesada
+datos <- readRDS("data/datos_procesados.rds")
+
+# Crear el objeto de serie de tiempo
+serie <- ts(
+  datos[["Total Entidad"]],
+  start = c(1997, 1),
+  frequency = 12
+)
+
+# Graficar la serie
 plot(
   serie,
   main = "Robos a negocio en la Ciudad de México",
